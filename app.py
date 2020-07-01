@@ -1,12 +1,13 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, session
+from flask import Flask, render_template, redirect, request, url_for, session, flash, Markup
+from functools import wraps
 from flask_pymongo import PyMongo, pymongo
-import bcrypt
+from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId 
 import json
 if os.path.exists("env.py"):
   import env 
-from bson.objectid import ObjectId
+
 
 app = Flask(__name__)
 
@@ -15,6 +16,15 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 app.secret_key = "cocina"
 
 mongo = PyMongo(app)
+
+#Database refeerences
+user = mongo.db.user
+
+
+# Quick functions
+def find_user(username):
+    return user.find_one({"username": username})
+
 
 @app.route('/')
 @app.route('/home')
@@ -41,7 +51,6 @@ def view_recipe(recipes_id):
 
 
 
-
 @app.route('/edit_recipe/<recipes_id>')
 def edit_recipe(recipes_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipes_id)})
@@ -50,64 +59,10 @@ def edit_recipe(recipes_id):
                            categories=all_categories)
 
 
+@app.route('/add_recipe')
+def add_recipe():
+    return render_template('add_recipe.html', categories=mongo.db.categories.find())
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-   
-    logged_in = False
-    if request.method == 'GET' and not 'username' in session:
-        return render_template('login.html',
-                               logged_in=logged_in)
-    elif request.method == 'GET' and 'username' in session:
-        logged_in = True
-        recipes = mongo.db.recipes.find()
-        
-        recipes_dict = {}
-        
-        for i, recipe in enumerate(recipes):
-            recipe.pop('_id', None)
-            recipes_dict[i] = recipe
-        
-        recipes_dict = json.dumps(recipes_dict)
-
-        return render_template('login.html',
-                               username=session['username'],
-                               logged_in=logged_in,
-                               recipes=recipes_dict)
-    if request.method == 'POST':
-        session['username'] = request.form["username"]
-        logged_in = True
-        recipes=mongo.db.recipes.find()
-        recipes_dict = {}
-        
-        for i, recipe in enumerate(recipes):
-            recipe.pop('_id', None)
-            recipes_dict[i] = recipe
-        
-        recipes_dict = json.dumps(recipes_dict)
-            
-        return render_template('login.html',
-                              username=session['username'],
-                              logged_in=logged_in,
-                              recipes=recipes_dict)
-
-
-@app.route('/logout')
-def logout():
-        print('logged out')
-        session.clear()
-        return redirect(url_for('home'))
-
-
-@app.route('/my_recipes', methods=['GET', 'POST'])
-def my_recipes():
-    if not 'username' in session:
-        return redirect('/login')
-    else:
-        recipes = mongo.db.recipes.find()
-        return render_template('my_recipes.html',
-                           username=session['username'],
-                           recipes=recipes)
 
 
 @app.route('/insert_recipe', methods=['POST'])
@@ -116,13 +71,74 @@ def insert_recipe():
     recipes.insert_one(request.form.to_dict())
     return redirect(url_for('get_recipes'))
 
+#sign up feature
 
-@app.route('/add_recipe')
-def add_recipe():
-    if 'username' in session:
-        return 'You are logged in as ' + session['username']
+# Login Page
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    # if the request method is post then return then login.html
+    if request.method == "POST":
+        # Get form elemnts
+        username = request.form.get('username')
+        password = request.form.get("user_password")
+        reg_user = find_user(username)
+        # User and password check
+        if reg_user and check_password_hash(reg_user["password"], password):
+            # Confirmation message
+            flash(Markup(
+                "Hey, Welcome "
+                + username.capitalize() +
+                ", you are logged in"))
+            session["user"] = username
+            return redirect(url_for('index', username=session["user"]))
 
-    return render_template('add_recipe.html', categories=mongo.db.categories.find())
+        else:
+            # Login validation
+            flash(Markup(
+                "Those details do not match our records," +
+                "either try again or register for an account."))
+        return redirect(url_for('login'))
+
+    return render_template('login.html')
+
+
+# Register Page
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+
+        # Add new user, lower case the name for access logic
+
+        new_user = request.form.get('new_user').lower()
+        new_pass = request.form.get('new_pass')
+        new_email = request.form.get('new_email')
+        reg_user = find_user(new_user)
+
+        # Error handling
+
+        if reg_user:
+            flash(Markup(
+                "The username " + new_user +
+                " is already taken, please try another name"))
+            return redirect(url_for('register'))
+
+        # insert items to the database
+        user.insert_one({
+            "username": new_user,
+            "password": generate_password_hash(new_pass),
+            "email": new_email,
+        })
+
+        # Add new_user to session and display message
+        session["user"] = new_user
+        flash(Markup("Welcome aboard, "
+                     + new_user.capitalize() +
+                     "<br>" +
+                     "You're now part of the team, and logged in!"))
+
+        return redirect(url_for('index', username=session["user"]))
+
+    return render_template("register.html")
 
 
 
