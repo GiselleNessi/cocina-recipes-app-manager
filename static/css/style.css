@@ -6,11 +6,22 @@
  * Made By MaterializeCSS.com
  */
 
+/* -- Carousel slider --*/
+
+.carousel {
+ object-fit: cover;
+}
+
+/* -- Nav bar --*/
+ .nav-wrapper {
+  background-color: #17252A;
+}
+
  nav ul a,
  nav .brand-logo {
-   color: #444;
+   color: #ffffff;
  }
- 
+
  p {
    line-height: 2rem;
  }
@@ -23,7 +34,6 @@
    min-height: 380px;
    line-height: 0;
    height: auto;
-   color: rgba(255,255,255,.9);
  }
    .parallax-container .section {
      width: 100%;
