@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="card-image">
+        <img src="{{ recipes.image }}" width="300" height="300">
+    </div>
+    <!--This page will display all information regarding a recipe-->
+    <div>
+        <h4>{{recipes.recipe_name}}</h4>
+    </div>
+    <div class="recipe-author">
+        <i>Author: {{recipes.author}} </i>
+    </div>
+    <div>
+        <p>{{recipes.recipe_description}}</p>
+        <br>
+    </div>
+    <div class="inline-details">
+        <ul>
+            <li><i class="small material-icons">people_outline</i><span> Meal Type:
+                    {{recipes.category_name}}</span></li>
+            <li><i class="small material-icons">alarm_on</i><span> Time:
+                    {{recipes.time}}</span></li>
+            <li><i class="small material-icons">alarm_on</i><span> Serves:
+                    {{recipes.serves}}</span></li>
+            <li><i class="small material-icons">people_outline</i><span> Added by:
+                    {{recipes.recipe_added_by_username}}</span></li>
+            <i class="small material-icons">local_dining</i><span>Try using our <a
+                    href="{{url_for('cooking_tools')}}">{{recipes.tool_name}}</a></span>
+        </ul>
+    </div>
+
+    <div class="paragraph-details">
+        <ul>
+            <h5>Ingredients</h5>
+            <li> {{recipes.ingredients}} </li>
+        </ul>
+    </div>
+    <div class="paragraph-details">
+        <h5>Method</h5>
+        <p>{{recipes.method}}</p>
+    </div>
+    {% if session.user %}
+    <div class="inline_actions edit-delete-btns">
+        <a href="{{url_for('edit_recipe', recipes_id=recipes._id)}}"
+            class="waves-effect waves-light btn btn_small blue">Edit</a>
+
+        <a href="{{url_for('delete_recipe', recipes_id=recipes._id)}}"
+            class="waves-effect waves-light btn btn_small red">Delete</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

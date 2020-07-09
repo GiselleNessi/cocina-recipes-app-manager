@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    {% for tools in cooking_tools %}
+    <div class="col s12 m6 l3">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{ tools.tool_image }}" width="300" height="300">
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="card-content">
+          <p><strong>{{tools.tool_name}}</strong>
+            {{tools.description}}</p>
+        </div>
+        <div class="card-action">
+          <a href="#">Buy</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}
