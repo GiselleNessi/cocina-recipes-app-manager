@@ -7,6 +7,12 @@
  * Made By MaterializeCSS.com
  */
 
+
+ .hero-header,
+.hero-parallax {
+    background: url(../static/images/cooking.jpg);
+}
+
 /* -- Carousel slider --*/
 
 .carousel {

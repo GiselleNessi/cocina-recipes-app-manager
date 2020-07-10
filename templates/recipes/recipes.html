@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container">
+
   <div class="row">
     <div class="col s12 m10 medium-large-only">
       <ul class="tabs  tabs-fixed-width filter">
@@ -15,7 +15,7 @@
 
   <div class="row">
     {% for recipe in recipes %}
-    <div class="col s12 m6 l3">
+    <div class="col s12 m6 l4">
       <div class="card">
         <div class="card-image">
           <img src="{{ recipe.image }}" width="300" height="300">
@@ -32,6 +32,4 @@
     </div>
     {% endfor %}
   </div>
-
-</div>
 {% endblock %}
