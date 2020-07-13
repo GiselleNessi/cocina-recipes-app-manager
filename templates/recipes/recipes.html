@@ -1,29 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-
+ 
   <div class="row">
-    <div class="col s12 m10 medium-large-only">
-      <ul class="tabs  tabs-fixed-width filter">
-        <li class="tab col disabled"><a>Filter By :</a></li>
-        <li class="tab col "><a class="active filteroption" data-name="*">All</a></li>
-        {% for cat in categories %}
-        <li class="tab col "><a class="filteroption" data-name="{{cat.category_name}}">{{cat.category_name}}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
-
-  <div class="row">
+    <h2 class="center-align">All Recipes</h2>
     {% for recipe in recipes %}
     <div class="col s12 m6 l4">
       <div class="card">
         <div class="card-image">
-          <img src="{{ recipe.image }}" width="300" height="300">
-          <span class="card-title">Card Title</span>
+          <img src="{{ recipe.image }}" height="300" width="300">
+          <span class="card-title">{{recipe.recipe_name}}</span>
         </div>
         <div class="card-content">
           <p><strong>{{recipe.category_name}}</strong>
-            {{recipe.recipe_name}} - {{ recipe.time }}</p>
+            - {{recipe.recipe_name}}</p>
         </div>
         <div class="card-action">
           <a href="{{ url_for('view_recipe', recipes_id=recipe._id) }}">View Recipe</a>

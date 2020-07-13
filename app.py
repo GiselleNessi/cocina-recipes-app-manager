@@ -34,14 +34,21 @@ def home():
 
 @app.route('/index')
 def index():
-    recipes = list(mongo.db.recipes.find().sort(
-        "views", pymongo.DESCENDING).limit(4))
-    return render_template('index.html', recipes=recipes)
+    recipes = list(mongo.db.recipes.find())
+    cursor = mongo.db.recipes.find({}, {'_id': 0, "username": 1,
+                                        "recipe_name": 1, "category_name": 1,
+                                        "tool_name": 1, "author": 1,
+                                        "time": 1, "serves": 1,
+                                        "recipe_added_by_username": 1})
+    total_recipes = cursor.count()
+    return render_template('index.html', recipes=recipes, total_recipes=total_recipes)
 
 
 #Get recipes
 @app.route('/get_recipes', methods=['GET', 'POST'])
 def get_recipes():
+    recipes = list(mongo.db.recipes.find().sort(
+        "category_name", pymongo.DESCENDING).limit(20))
     return render_template("recipes/recipes.html", recipes=mongo.db.recipes.find())
 
 #Add recipes
@@ -71,8 +78,8 @@ def insert_recipe():
             'serves': request.form.get('serves'),
             'ingredients':request.form.get('ingredients'),
             'method':request.form.get('method') ,
-            "recipe_added_by": user_id,
-            "recipe_added_by_username": user
+            'recipe_added_by': request.form.get('user_id'),
+            'recipe_added_by_username': request.form.get('recipe_added_by_username')
         }
         new_recipe = recipes.insert_one(insert)
         user = mongo.db.user
@@ -108,8 +115,8 @@ def update_recipe(recipes_id):
         'serves': request.form.get('serves'),
         'ingredients':request.form.get('ingredients'),
         'method':request.form.get('method') ,
-        'recipe_added_by': user_id,
-        'recipe_added_by_username': user,
+        'recipe_added_by': request.form.get('user_id'),
+        'recipe_added_by_username': request.form.get('recipe_added_by_username'),
     })
     return redirect(url_for('get_recipes'))
 
@@ -133,9 +140,7 @@ def delete_recipe(recipes_id):
     return redirect(url_for('get_recipes'))
 
 
-#sign up feature
-
-# Login Page
+# Login Page feature
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     # if the request method is post then return then login.html
@@ -168,29 +173,23 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-
         # Add new user, lower case the name for access logic
-
         new_user = request.form.get('new_user').lower()
         new_pass = request.form.get('new_pass')
         new_email = request.form.get('new_email')
         reg_user = find_user(new_user)
-
         # Error handling
-
         if reg_user:
             flash(Markup(
                 "The username " + new_user +
                 " is already taken, please try another name"))
             return redirect(url_for('register'))
-
         # insert items to the database
         user.insert_one({
             "username": new_user,
             "password": generate_password_hash(new_pass),
             "email": new_email,
         })
-
         # Add new_user to session and display message
         session["user"] = new_user
         flash(Markup("Welcome aboard, "
@@ -240,9 +239,8 @@ def update_profile(user_id):
         'username': request.form.get('new_user'),
         "password": generate_password_hash(new_pass),
         "email": request.form.get('new_email'),
-        "add_recipe": []
     })
-    return redirect(url_for('logout'))
+    return redirect(url_for('login'))
 
 
 # Delete Profile

@@ -6,9 +6,9 @@ $(document).ready(function () {
 });
 
 /* -- Slider activation -- */
-$(document).ready(function(){
+$(document).ready(function () {
     $('.slider').slider();
-  });
+});
 
 
 /* -- Flash Messages -- */
@@ -17,4 +17,4 @@ function flashed_messages() {
     setTimeout(function () {
         $("#message").removeClass("show");
     }, 5000);
-}
+};

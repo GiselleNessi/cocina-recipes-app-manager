@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {% block content %}
-<h3>Add Recipe</h3>
-
+<h2>Add Recipe</h2>
 <div class="container">
-
     <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
 
         <div class="row">
@@ -15,18 +13,18 @@
 
         <div class="row">
             <div class="input-field col s12">
+                <i class="material-icons prefix">add_a_photo</i>
                 <input id="image" name="image" type="text" placeholder="Add a link to the image" class="form-control "
                     required>
                 <label for="item_url">
                     Link to image
-                    <i class="far fa-question-circle tooltipped" data-position="right" aria-hidden="true"></i>
                 </label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">poll</i>
+                <i class="material-icons prefix">create</i>
                 <select id="category_name" name="category_name">
                     <option value="" disabled selected>Choose Category</option>
                     {% for cat in categories %}
@@ -50,42 +48,42 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
+                <i class="material-icons prefix">person</i>
                 <input id="author" name="author" type="text">
                 <label for="icon_prefix">Author</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
+                <i class="material-icons prefix">short_text</i>
                 <input id="recipe_description" name="recipe_description" type="text">
                 <label for="icon_prefix">Recipe Short Description</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
+                <i class="material-icons prefix">access_time</i>
                 <input name="time" id="time" type="text">
                 <label for="icon_telephone">Cooking Time</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
+                <i class="material-icons prefix">people</i>
                 <input name="serves" id="serves" type="text">
                 <label for="icon_telephone">Serves</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
+                <i class="material-icons prefix">format_list_bulleted</i>
                 <input name="ingredients" id="ingredients" type="text">
                 <label for="icon_telephone">Ingredients</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
+                <i class="material-icons prefix">format_list_numbered</i>
                 <input name="method" id="method" type="text">
                 <label for="icon_telephone">Method</label>
             </div>

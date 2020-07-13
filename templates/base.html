@@ -7,7 +7,7 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!--Let browser know website is optimized for mobile-->
   <title>Cocina - Recipe Manager</title>
   <!-- Link for custom css -->
@@ -59,23 +59,28 @@
     {% block content %} {% endblock %}
   </div>
 
-  <footer class="page-footer teal">
+  <footer class="page-footer">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our
-            full time job. Any amount would help support and continue development on this project and is greatly
-            appreciated.</p>
-
+          <h5 class="white-text">Cocina</h5>
+          <p class="grey-text text-lighten-4">Easy to use app to create and manage your own cookbook. 
+            Share recipes with family and friends and get cooking</p>
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
+          <h5 class="white-text">Navigation</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
+            <li><a class="white-text" href="{{url_for('index')}}">Home</a></li>
+            <li><a class="white-text" href="{{url_for('get_recipes')}}">All Recipes</a></li>
+            <li><a class="white-text" href="{{url_for('cooking_tools')}}">Cooking Tools</a></li>
+            {% if session.user %}
+            <li><a class="white-text" href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
+            <li><a class="white-text" href="{{url_for('add_recipe')}}">Add Recipe</a></li>
+            <li><a class="white-text" href="{{ url_for('logout') }}">Log out</a></li>
+            {% else %}
+            <li><a class="white-text" href="{{ url_for('login') }}">Login</a></li>
+            <li><a class="white-text" href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
           </ul>
         </div>
         <div class="col l3 s12">
@@ -91,7 +96,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-        Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        Made by <a class="brown-text text-lighten-3" href="https://github.com/GiselleNessi">Giselle Chacon</a>
       </div>
     </div>
   </footer>
@@ -102,4 +107,5 @@
   <!-- Custom JavaScript -->
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
+
 </html>
