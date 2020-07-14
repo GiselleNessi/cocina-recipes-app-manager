@@ -16,6 +16,7 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 app.secret_key = "cocina"
 
 mongo = PyMongo(app)
+user = mongo.db.user
 
 
 def find_user(username):
@@ -213,6 +214,7 @@ def logout():
 @app.route('/profile/<username>', methods=["GET", "POST"])
 def profile(username):
     # Check if user is logged in
+    user = mongo.db.user
     if 'user' in session:
         # if the user is in session return profile.html for that user
         user_in_db = user.find_one({"username": username})
