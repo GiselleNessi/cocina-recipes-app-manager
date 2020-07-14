@@ -78,8 +78,8 @@ def insert_recipe():
             'serves': request.form.get('serves'),
             'ingredients':request.form.get('ingredients'),
             'method':request.form.get('method') ,
-            'recipe_added_by': request.form.get('user_id'),
-            'recipe_added_by_username': request.form.get('recipe_added_by_username')
+            'recipe_added_by': user_id,
+            'recipe_added_by_username': user
         }
         new_recipe = recipes.insert_one(insert)
         user = mongo.db.user
@@ -103,6 +103,8 @@ def edit_recipe(recipes_id):
 @app.route('/update_recipe/<recipes_id>', methods=['GET', 'POST'])
 def update_recipe(recipes_id):
     recipes = mongo.db.recipes
+    user = session['user'].lower()
+    user_id = find_user(user)["_id"]
     recipes.update({'_id': ObjectId(recipes_id)},
     {
         'recipe_name':request.form.get('recipe_name'),
@@ -115,8 +117,8 @@ def update_recipe(recipes_id):
         'serves': request.form.get('serves'),
         'ingredients':request.form.get('ingredients'),
         'method':request.form.get('method') ,
-        'recipe_added_by': request.form.get('user_id'),
-        'recipe_added_by_username': request.form.get('recipe_added_by_username'),
+        'recipe_added_by': user_id,
+        'recipe_added_by_username': user
     })
     return redirect(url_for('get_recipes'))
 

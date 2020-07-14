@@ -1,46 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
-    
-
-
 {% include "messages.html" %}
 <!-- Register Form -->
 <div class="meetings edit top-bg bottom">
-    <h4 class="title-head"> Register</h4>
+  <h4 class="title-head"> Register</h4>
   <div class="row add-form">
-    <form class="col s12"  method="POST" action="/register">
+    <form class="col s12" method="POST" action="/register">
       <div class="row">
         <div class="input-field col s6">
           <input placeholder="Please enter a username" name="new_user" id="new_user" type="text" class="validate">
           <label for="new_user">Username</label>
         </div>
       </div>
-        <div class="row">
-          <div class="input-field col s6">
+      <div class="row">
+        <div class="input-field col s6">
           <input placeholder="Please enter a valid email" name="new_email" id="new_email" type="email" class="validate">
           <label for="new_email">Email</label>
-          </div>
         </div>
-        <div class="row">
-          <div class="input-field col s6">
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
           <input placeholder="Please enter a password" name="new_pass" id="new_pass" type="password" class="validate">
           <label for="new_pass">Password</label>
-          </div>
         </div>
-       
-        <!-- Submit Button -->
-        <div class=" ">
-        <button class="btn waves-effect waves-light standard-btn icon-right btn-spc left-spc btn-color" type="submit">Register<i class="material-icons right">send</i></button>
+      </div>
+      <!-- Submit Button -->
+      <div class=" ">
+        <button class="btn waves-effect waves-light standard-btn icon-right btn-spc left-spc btn-color"
+          type="submit">Register<i class="material-icons right">send</i></button>
 
-        <a class="btn waves-effect waves-light standard-btn icon-right btn-spc left-spc home" href="{{ url_for('index') }}" aria-label="Home button">
-                Home
-                <i class="fa fa-home" aria-hidden="true"></i>
-            </a>
-            </div>
-        <!-- Submit Button -->
+        <a class="btn waves-effect waves-light standard-btn icon-right btn-spc left-spc home"
+          href="{{ url_for('index') }}" aria-label="Home button">
+          Home
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </a>
+      </div>
+      <!-- Submit Button -->
     </form>
   </div>
 </div>
-
 <!-- End Register Form -->
 {% endblock %}

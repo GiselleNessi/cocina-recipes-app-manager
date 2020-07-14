@@ -16,9 +16,10 @@
 
 <body>
   <header>
+    <!-- Site navigation -->
     <nav>
       <div class="nav-wrapper">
-        <a href="{{url_for('index')}}" class="brand-logo">Cocina Logo</a>
+        <a href="{{url_for('index')}}" class="brand-logo">COCINA</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="{{url_for('index')}}">Home</a></li>
@@ -28,14 +29,14 @@
           {% if session.user %}
           <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
           <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
-          <li><a href="{{ url_for('logout') }}">Log out</a></li>
+          <li><a class="waves-effect waves-light btn red" href="{{ url_for('logout') }}">Log out</a></li>
           {% else %}
 
           <li><a href="{{ url_for('login') }}">Login</a></li>
           <li><a href="{{ url_for('register') }}">Register</a></li>
           {% endif %}
         </ul>
-
+<!-- Mobile navigation -->
         <ul class="side-nav" id="mobile-demo">
           <li><a href="{{url_for('index')}}">Home</a></li>
           <li><a href="{{url_for('get_recipes')}}">All Recipes</a></li>
@@ -53,18 +54,21 @@
         </ul>
       </div>
     </nav>
+    <!-- End navigation -->
   </header>
 
+  <!-- Main content home page -->
   <div class="container">
     {% block content %} {% endblock %}
   </div>
 
+  <!-- Footer with site navigation -->
   <footer class="page-footer">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Cocina</h5>
-          <p class="grey-text text-lighten-4">Easy to use app to create and manage your own cookbook. 
+          <p class="grey-text text-lighten-4">Easy to use app to create and manage your own cookbook.
             Share recipes with family and friends and get cooking</p>
         </div>
         <div class="col l3 s12">
@@ -86,24 +90,26 @@
         <div class="col l3 s12">
           <h5 class="white-text">Connect</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
+            <li><i class="fa fa-facebook fa-lg" aria-hidden="true"></i><a class="white-text" href="https://www.facebook.com/" target="_blank"></a></li>
+            <li><i class="fa fa-twitter fa-lg" aria-hidden="true"></i><a class="white-text" href="https://twitter.com/" target="_blank"></a></li>
+            <li><i class="fa fa-github fa-lg" aria-hidden="true"></i><a class="white-text" href="https://github.com/GiselleNessi/cocina-recipes-app-manager" target="_blank"></a></li>
+            <li><i class="fa fa-instagram fa-lg" aria-hidden="true"></i><a class="white-text" href="https://www.instagram.com/" target="_blank"></a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-        Made by <a class="brown-text text-lighten-3" href="https://github.com/GiselleNessi">Giselle Chacon</a>
+        Made by <a class="brown-text text-lighten-3" href="https://github.com/GiselleNessi" target="_blank">Giselle Chacon</a>
       </div>
     </div>
   </footer>
-  <!--  Scripts-->
+  <!--  Scripts, jquery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!-- Fontaswesome -->
+  <script src="https://use.fontawesome.com/c4f46deaf6.js"></script>
   <!-- Custom JavaScript -->
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>

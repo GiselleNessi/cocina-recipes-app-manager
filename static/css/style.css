@@ -7,13 +7,19 @@
  * Made By MaterializeCSS.com
  */
 
- html {
+html {
   scroll-behavior: smooth;
 }
 
 body {
   background-color: #ffffff;
 }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Libre Baskerville', serif;
+}
+
+/* -- Images --*/
 
 .responsive-img {
   display: block;
@@ -22,6 +28,7 @@ body {
 }
 
 /* -- Carousel slider --*/
+
 .slider .slides li img {
 background-color: rgba(0, 0, 0, 0.5);
 }
@@ -67,9 +74,11 @@ p {
   color: #e0475b;
 }
 
+/* -- Footer --*/
 
 footer.page-footer {
   margin: 0;
+  bottom: 0;
   background-color: #e0475b;
 }
 

@@ -18,3 +18,5 @@ function flashed_messages() {
         $("#message").removeClass("show");
     }, 5000);
 };
+
+
