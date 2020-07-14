@@ -271,25 +271,25 @@ The following are the nav bar links available when a user is logged in:
 ### Testing User Stories
 The testing of users stories consisted of:
 
-1. Creating a new account - Register functionality
-2. Log in - can the user log back in - Login functionality
-3. Logging out - can the user log out - Logout functionality
-4. Create - Add a recipe - can the user add a new recipe - Add recipe Functionality
-5. Read - Can a user read/view their newly added recipe - Read functionality
-6. Update - Edit a recipe - can a user edit a recipe - Edit recipe functionality
-7. Delete a recipe - can a user delete a recipe - Delete recipe functionality
-8. Feedback - does the user get the flashed messages to provide feedback
-9. Read - Can a user read their account information - Read My Profile Functionality
-10. Update - can a user update their account information - Edit My Profile functionality
-11. Delete - Can a user delete their account - Delete My Profile functionality
-12. Navigation Navbar - can a user navigate the site through full-screen and mobile view navigation at the navbar
-13. Navigation Footer - can a user navigate the site through the footer
-14. All recipes - user can see all recipes added by all users as a directory of recipes.
+1. All recipes - user can see all recipes added by all users as a directory of recipes: Click all recipes on the navbar, successfully able to see all recipes added by all users.
+2. Creating a new account - Login functionality: Click 'login' on the nav bar, enter user's details previously register, click login button. Succesfully login and rederict to homepage.
+3. Log in - can the user log back in - Register functionality: Click 'register' on the navbar, enter desired user details to create account, click register button, succesfully created account and able to login after.
+4. Logging out - can the user log out - Logout functionality: Click on 'logout button' on the navbar, succesfully logout of my account and redirect to homepage.
+5. Create - Add a recipe - can the user add a new recipe - Add recipe Functionality: Once loged-in, click on 'add recipe' on the nav bar, reedirect to add recipe page and form, fill the form with my recipe information, click add button, recipe added succesfully and I'm able to see it in recipes page.
+6. Read - Can a user read/view their newly added recipe - Read functionality: Click on a recipe 'view reecipe', redirects me to the single selected recipe, read and view, user loged in eedit and delete buttons are available.
+7. Update - Edit a recipe - can a user edit a recipe - Edit recipe functionality: If loged in, click on view recipe, able to see the buttons edit and delete, click on edit button, redirects me to the edit page and form, succesfully able to fill the form and edit the selected recipe, click update recipe and recipe updates succesfully.
+8. Delete a recipe - can a user delete a recipe - Delete recipe functionality: If loged in, on view recipe, able to see the deelete button, click on delete and successfully delete thee selected recipe.
+9. Feedback - does the user get the flashed messages to provide feedback: Users gets the messages successfully on each action.
+10. Read - Can a user read their account information - Read My Profile Functionality: Click my profile on the navbar, redirect to profilee page, able to see my account information added by me.
+11. Update - can a user update their account information - Edit My Profile functionality: If loged in, on my profile page, able to click on edit button to edit my user information. Click edit and user information succesfully updates.
+12. Delete - Can a user delete their account - Delete My Profile functionality: If loged in, able to click on delete button, successfuly deltes my profile and information.
+13. Navigation Navbar - can a user navigate the site through full-screen and mobile view navigation at the navbar: navigatee on both desktop and mobile succesfully, all links of the manu are working.
+14. Navigation Footer - can a user navigate the site through the footer: click on the navigation menu on footer, all links are working to navigate the page.
 
 
-The testing of the site was extensive. As described above, I worked through all of those features to ensure all features are working well.
+The testing of the site was extensive. As described above, I worked through all of those features to ensure all features are working well. All changes add, edit, delete, succesfully reflect on both the front-end and the back-end on the database in mongoDB.
 
-For the functionality just mentioned I didn’t encounter any bugs. I also got 1 more person to test the site using the above features and no bugs where found.
+For the functionality just mentioned I didn’t encounter any bugs. I also got 1 more person to test the same features mentioned above and no bugs where found.
 
 
 ### Responsive and Functional Testing
