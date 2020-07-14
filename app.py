@@ -17,11 +17,7 @@ app.secret_key = "cocina"
 
 mongo = PyMongo(app)
 
-#Database refeerences
-user = mongo.db.user
 
-
-# Quick functions
 def find_user(username):
     return user.find_one({"username": username})
 
@@ -255,8 +251,6 @@ def delete_account(user_id):
     flash(Markup(
         user.capitalize() + " Has left... Good Bye"))
     return redirect(url_for('index'))
-
-
 
 
 if __name__ == '__main__':
