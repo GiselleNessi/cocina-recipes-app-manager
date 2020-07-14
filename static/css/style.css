@@ -19,6 +19,22 @@ h1, h2, h3, h4, h5 {
   font-family: 'Libre Baskerville', serif;
 }
 
+.btn-large {
+  background-color: #192f01;
+}
+
+.btn-large:hover {
+  background-color: #2c5202;
+}
+
+.btn {
+  background-color: #192f01;
+}
+
+.btn:hover {
+  background-color: #2c5202;
+}
+
 /* -- Images --*/
 
 .responsive-img {
@@ -73,6 +89,7 @@ p {
   font-size: inherit;
   color: #e0475b;
 }
+
 
 /* -- Footer --*/
 
