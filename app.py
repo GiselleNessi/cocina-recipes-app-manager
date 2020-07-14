@@ -3,10 +3,10 @@ from flask import Flask, render_template, redirect, request, url_for, session, f
 from functools import wraps
 from flask_pymongo import PyMongo, pymongo
 from werkzeug.security import generate_password_hash, check_password_hash
-from bson.objectid import ObjectId 
+from bson.objectid import ObjectId
 import json
 if os.path.exists("env.py"):
-  import env 
+    import env
 
 
 app = Flask(__name__)
@@ -41,14 +41,16 @@ def index():
     return render_template('index.html', recipes=recipes, total_recipes=total_recipes)
 
 
-#Get recipes
+# Get recipes
 @app.route('/get_recipes', methods=['GET', 'POST'])
 def get_recipes():
     recipes = list(mongo.db.recipes.find().sort(
         "category_name", pymongo.DESCENDING).limit(20))
     return render_template("recipes/recipes.html", recipes=mongo.db.recipes.find())
 
-#Add recipes
+# Add recipes
+
+
 @app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():
     recipes = mongo.db.recipes.find()
@@ -57,7 +59,9 @@ def add_recipe():
     return render_template(
         'recipes/add_recipe.html', categories=categories, cooking_tools=cooking_tools, recipes=recipes)
 
-#Insert recipes
+# Insert recipes
+
+
 @app.route('/insert_recipe', methods=['GET', 'POST'])
 def insert_recipe():
     if request.method == 'POST':
@@ -65,16 +69,16 @@ def insert_recipe():
         user_id = find_user(user)["_id"]
         recipes = mongo.db.recipes
         insert = {
-            'recipe_name':request.form.get('recipe_name'),
-            'category_name':request.form.get('category_name'),
+            'recipe_name': request.form.get('recipe_name'),
+            'category_name': request.form.get('category_name'),
             'tool_name': request.form.get('tool_name'),
-            'author':request.form.get('author'),
+            'author': request.form.get('author'),
             'image': request.form.get('image'),
             'recipe_description': request.form.get('recipe_description'),
             'time': request.form.get('time'),
             'serves': request.form.get('serves'),
-            'ingredients':request.form.get('ingredients'),
-            'method':request.form.get('method') ,
+            'ingredients': request.form.get('ingredients'),
+            'method': request.form.get('method'),
             'recipe_added_by': user_id,
             'recipe_added_by_username': user
         }
@@ -87,7 +91,9 @@ def insert_recipe():
 
     return redirect(url_for('get_recipes'))
 
-#Edit recipes
+# Edit recipes
+
+
 @app.route('/edit_recipe/<recipes_id>', methods=['GET', 'POST'])
 def edit_recipe(recipes_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipes_id)})
@@ -97,29 +103,33 @@ def edit_recipe(recipes_id):
                            categories=categories, cooking_tools=cooking_tools)
 
 # Update recipes
+
+
 @app.route('/update_recipe/<recipes_id>', methods=['GET', 'POST'])
 def update_recipe(recipes_id):
     recipes = mongo.db.recipes
     user = session['user'].lower()
     user_id = find_user(user)["_id"]
     recipes.update({'_id': ObjectId(recipes_id)},
-    {
-        'recipe_name':request.form.get('recipe_name'),
-        'category_name':request.form.get('category_name'),
+                   {
+        'recipe_name': request.form.get('recipe_name'),
+        'category_name': request.form.get('category_name'),
         'tool_name': request.form.get('tool_name'),
-        'author':request.form.get('author'),
+        'author': request.form.get('author'),
         'image': request.form.get('image'),
         'recipe_description': request.form.get('recipe_description'),
         'time': request.form.get('time'),
         'serves': request.form.get('serves'),
-        'ingredients':request.form.get('ingredients'),
-        'method':request.form.get('method') ,
+        'ingredients': request.form.get('ingredients'),
+        'method': request.form.get('method'),
         'recipe_added_by': user_id,
         'recipe_added_by_username': user
     })
     return redirect(url_for('get_recipes'))
 
-#View recipes
+# View recipes
+
+
 @app.route('/view_recipe/<recipes_id>', methods=['GET', 'POST'])
 def view_recipe(recipes_id):
     recipes = mongo.db.recipes.find_one({"_id": ObjectId(recipes_id)})
@@ -132,7 +142,9 @@ def view_recipe(recipes_id):
 def cooking_tools():
     return render_template('recipes/cooking_tools.html', cooking_tools=mongo.db.cooking_tools.find())
 
-#Delete recipes
+# Delete recipes
+
+
 @app.route('/delete_recipe/<recipes_id>', methods=['GET', 'POST'])
 def delete_recipe(recipes_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipes_id)})
