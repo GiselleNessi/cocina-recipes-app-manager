@@ -8,18 +8,16 @@
   - [User Stories](#User-Stories)
   - [Design Development](#Design-Development)
   - [Wireframes](#Wireframes)
-  - [Database Structure](#Database-Structure)
+- [**Database Structure**](#Database-Structure)
 - [**Features**](#Features)
-  - [Functionality](#Functionality)
   - [Existing Features](#Existing-Features)
   - [Features Left To Implement](#Features-Left-To-Implement)
 - [**Technologies Used**](#Technologies-Used)
   - [Version Control](#Version-Control)
   - [Hosting](#Hosting)
 - [**Testing**](#Testing)
-  - [Testing User Stories](#Testing-User-Stories)
-  - [Responsive and Functional Testing](#Responsive-and-Functional-Testing)
-  - [Additional Testing](#Additional-Testing)
+  - [Tests Performed](#Tests-Performed)
+  - [Known issue list](#Known-Issue-List)
   - [Code Validation](#Code-Validation)
 - [**Deployment**](#Deployment)
   - [Live App Link](#Live-App-Link)
@@ -113,56 +111,6 @@ The links to these images are available at the following links:
 - [**_Wireframe 8_**](static/images/mobile-addrecipeform.jpg)
 
 
-## Features
-
-### Existing Features
-
-**Login**
-
-- Users can create an account and log in. This gives registered users the possibility to add recipes, edit them and delete them.
-
-**Account management**
-
-- Users can see and edit their account and change their information.
-- Users have the possibility to delete their account.
-
-**Recipes**
-
-- Registered users are able to create, edit and delete recipes.
-- All users and unregistered visitors can browse the full database and access all recipes.
-
-**Registered users**
-
-- Registered users have access to functionalities reserved only to them, such as
-- Creating and editing a recipe
-- Deleting a recipe
-- Editing and deleting their account
-
-**Kitchen tools promotion**
-
-- When users a recipe, users are prompted to choose required kitchen tools from a dropdown menu.
-- All kitchen tools are linked to the site owners range of cooking tools (in this case, IKEA) to promote the brand.
-- The “Cooking tools” page displays all listed kitchen tools in the database.
-
-**Recipe count feature**
-
-- On the Homepage, there is a functionality that counts the total number of recipes added to the database, by all users.
-
-
-### Features Left to Implement
-
-- **Rating Recipes** - Add a feature for users to rate recipes. I would like to develop a rating feature which gives an average rating based on all likes against a recipe and display that average as a number or star rating on each listing.
-
-- **Search or sort by recipe categories feature** - Add a feature to sort all recipes by categories or via a search bar by typing keywords. 
-
-- **Statistics** - Expand on the recipe count feature to include more data points about the recipes (for example: time to cook, number of ingredients needed).
-
-- **Add Reviews**  - Develop a feature for users to be able to add text reviews, comments and questions to each recipe to potentially be answered by the site owner or the user who added the recipe. This would be a great way for users to interact with each other.
-
-- **Share** - Have an option for users to share directly from each recipe to a social media account, or by email, WhatsApp or other sharing apps. This could be developed using available APIs. This could make the app more sociable, with the ability to share easily with one click.
-
-
-
 ### Database Structure
 
 The data is organised on MongoDB in four collections: Recipes, Categories, Cooking_tools and User.
@@ -216,6 +164,55 @@ password: "string"
 }
 
 ```
+
+
+## Features
+
+### Existing Features
+
+**Login**
+
+- Users can create an account and log in. This gives registered users the possibility to add recipes, edit them and delete them.
+
+**Account management**
+
+- Users can see and edit their account and change their information.
+- Users have the possibility to delete their account.
+
+**Recipes**
+
+- Registered users are able to create, edit and delete recipes.
+- All users and unregistered visitors can browse the full database and access all recipes.
+
+**Registered users**
+
+- Registered users have access to functionalities reserved only to them, such as
+- Creating and editing a recipe
+- Deleting a recipe
+- Editing and deleting their account
+
+**Kitchen tools promotion**
+
+- When users a recipe, users are prompted to choose required kitchen tools from a dropdown menu.
+- All kitchen tools are linked to the site owners range of cooking tools (in this case, IKEA) to promote the brand.
+- The “Cooking tools” page displays all listed kitchen tools in the database.
+
+**Recipe count feature**
+
+- On the Homepage, there is a functionality that counts the total number of recipes added to the database, by all users.
+
+
+### Features Left to Implement
+
+- **Rating Recipes** - Add a feature for users to rate recipes. I would like to develop a rating feature which gives an average rating based on all likes against a recipe and display that average as a number or star rating on each listing.
+
+- **Search or sort by recipe categories feature** - Add a feature to sort all recipes by categories or via a search bar by typing keywords. 
+
+- **Statistics** - Expand on the recipe count feature to include more data points about the recipes (for example: time to cook, number of ingredients needed).
+
+- **Add Reviews**  - Develop a feature for users to be able to add text reviews, comments and questions to each recipe to potentially be answered by the site owner or the user who added the recipe. This would be a great way for users to interact with each other.
+
+- **Share** - Have an option for users to share directly from each recipe to a social media account, or by email, WhatsApp or other sharing apps. This could be developed using available APIs. This could make the app more sociable, with the ability to share easily with one click.
 
 
 ## Technologies Used
@@ -304,21 +301,21 @@ For the functionality just mentioned, I didn’t encounter any bugs. I also got 
 
 1. **Image:** I had an issue with allowing users to upload images to Heroku and MongoDB. Images did not display, causing an error.
 
-**Temporary solution:** I implemented a required field where users can put a URL link to an image. This seems to work fine, for now - images display properly without breaking.
+    **Temporary solution:** I implemented a required field where users can put a URL link to an image. This seems to work fine, for now - images display properly without breaking.
 
-Ideally, later I would like to work on this to develop a better function to store images on a cloud for users to be able to upload images from their computers.
+    Ideally, later I would like to work on this to develop a better function to store images on a cloud for users to be able to upload images from their computers.
 
 2. **Users:** During testing, I realised any user can edit or delete other users recipes.
 
-**Solution:** I didn’t have time but later I would like to further develop the existing function on my python code to specify that recipes can only be edited or deleted by the specific user who adds them. 
+    **Solution:** I didn’t have time but later I would like to further develop the existing function on my python code to specify that recipes can only be edited or deleted by the specific user who adds them. 
 
 3. **Alerts and messages:** Initially I tried printing messages on different actions on the python code but this didn’t work properly, I tried looking at implementing javascript alerts but some didn’t display at all, leaving the user without any feedback on their actions.
 
-**Temporary solution:** I made use of flash messages - this seems to work very well for now. In the future, I would like to develop a better solution using javascript functionalities, as this means my python functions are sometimes focused on two tasks at the same time, rather than one, which may cause errors.
+    **Temporary solution:** I made use of flash messages - this seems to work very well for now. In the future, I would like to develop a better solution using javascript functionalities, as this means my python functions are sometimes focused on two tasks at the same time, rather than one, which may cause errors.
 
 4. **Loading and resizing images:** Despite using frameworks like Materialised to ensure responsiveness, some images didn’t resize properly and are slow to load when the page is first opened. This is due to the images being heavy and loading time taking longer.
 
-**Solution:** In the future, I want to implement a cloud-based API, such as Cloudinary, for faster loading and resizing of images.
+    **Solution:** In the future, I want to implement a cloud-based API, such as Cloudinary, for faster loading and resizing of images.
 
 
 ### Code Validation
@@ -330,13 +327,11 @@ Ideally, later I would like to work on this to develop a better function to stor
 - I used the [Pep8 Online tool](http://pep8online.com/) to validate my Python syntax.
     - Line too long, for now, this doesn’t affect functionality. One example is the second line in app.py importing the libraries from flask.
 
-## Deployment
 
-## <a name="deployment"></a> Deployment: 
+## Deployment 
 
 
-#### <a name="deployment-to-heroku"></a> Deployment to Heroku
-##### Database Setup
+#### Database Setup
 
 Create database on MongoDB
 
@@ -348,7 +343,7 @@ Get data in place first, on atlas mongo website:
 * Create sample record in the user collection with username, email, password
 
 
-##### Setup using VS Code on a Mac
+#### Setup using VS Code on a Mac using the terminal window
 
 * **sudo pip3 install Flask** to install Flask
 * **python3 -m venv env** to install virtual environment in that folder
@@ -361,7 +356,7 @@ Get data in place first, on atlas mongo website:
 * Create instance of flask within app.py with **app = Flask(name)**
 * In Terminal **python3 app.py run** to run the app and serve
 
-##### Deploying to Heroku
+#### Deploying to Heroku
 
 I used GitHub for my version control and Heroku to host the live version of my project. To deploy my app to Heroku, I used the following steps:
 
@@ -402,9 +397,6 @@ The app was successfully deployed to Heroku at this stage.
 in new file env.py:
 	import os
 os.environ["MONGO_URI"] = "mongodb+srv://root:r00tUser@myfirstcluster-naitp.mongodb.net/recipes_manager?retryWrites=true&w=majority"
-
-
-*NOTE* Formatting of connection string carefully. No <> around password, there are THREE places to insert the correct into in to the connection string.
 
 
 in app.py this will read the needed variables from the env.py file, created above):
@@ -474,7 +466,7 @@ To run the code locally, users can download a local copy of my code to their des
     ```MONGO_URI="insert your mongo uri details here"```
 
 10. In the terminal, run the `pip3 install -r requirements.txt` command to install the requirements.txt file.
-11. You should now be able to run the app locally using the `python3 run.py` command.
+11. You should now be able to run the app locally using the `python3 app.py` command.
 
 ## Credits
 
@@ -509,3 +501,7 @@ Thank you to my mentor, Rohit, for his review of my project.
 ### Disclaimer
 
 This project is for educational purposes only not intended commercial use in any way.
+
+<div align="right">
+    <b><a href="#table-of-contents">↥ Back To Top</a></b>
+</div>
