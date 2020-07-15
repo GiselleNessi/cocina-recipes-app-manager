@@ -1,22 +1,23 @@
 # app.py
 # Project "COCINA" Python/Flask/MongoDB web application built by Giselle Chacon Nessi, ©Giselle Chacon 2020
-"""
-Imports the required tools, including werkzeug.security, pymongo, ObjectId
-and flask
-"""
+#----------------------------------------------------------------------------#
+# Imports
+#----------------------------------------------------------------------------#
 import os
 import json
 from functools import wraps
 from flask import Flask, render_template, redirect, request, url_for, session, flash, Markup
-from flask_pymongo import PyMongo, pymongo
+from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env
 
 
+#----------------------------------------------------------------------------#
+# App Config.
+#----------------------------------------------------------------------------#
 app = Flask(__name__)
-
 # Environment variables SECRET and MONGO_URI set in Heroku dashboard in production
 app.config["MONGO_DBNAME"] = 'recipes_manager'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
@@ -63,8 +64,6 @@ def get_recipes():
     Displays all recipes added by all users
     Collections should be display by category name
     """
-    recipes = list(mongo.db.recipes.find().sort(
-        "category_name", pymongo.DESCENDING).limit(20))
     return render_template("recipes/recipes.html", recipes=mongo.db.recipes.find())
 
 
@@ -140,7 +139,7 @@ def update_recipe(recipes_id):
     user = session['user'].lower()
     user_id = find_user(user)["_id"]
     recipes.update({'_id': ObjectId(recipes_id)},
-                   {
+    {
         'recipe_name': request.form.get('recipe_name'),
         'category_name': request.form.get('category_name'),
         'tool_name': request.form.get('tool_name'),
@@ -195,7 +194,7 @@ def cooking_tools():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """
-    Renders form to log in user includes data required validators 
+    Renders form to log in user includes data required 
     to only allow correct user information
     """
     # if the request method is post then return then login.html
@@ -270,9 +269,9 @@ def logout():
 # Account page
 @app.route('/profile/<username>', methods=["GET", "POST"])
 def profile(username):
-     """ 
-     Queries the database to check if the user is loged in,
-     then shows profile page with use information.
+    """ 
+    Queries the database to check if the user is loged in,
+    then shows profile page with use information.
     If not, redirects to index page
     """
     user = mongo.db.user
@@ -326,7 +325,6 @@ def delete_account(user_id):
     flash(Markup(
         user.capitalize() + " Has left... Good Bye"))
     return redirect(url_for('index'))
-
 
 # Run app
 if __name__ == '__main__':

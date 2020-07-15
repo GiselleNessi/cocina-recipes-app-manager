@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+<!-- Display users profile information -->
 <div class="row center">
   <i class="large material-icons">account_circle</i>
 </div>
 {% include "messages.html" %}
 <h4 class="title">{{ user.username | capitalize }}'s Profile</h4>
 <hr class="bottom">
-<!-- Account Page -->
 <div class="meetings edit top bg-bottom">
   <h4 class="title-head"> Account Information</h4>
   <div class="row add-form">

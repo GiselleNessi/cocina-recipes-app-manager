@@ -35,19 +35,18 @@
 
 ## About
 
-Cocina is an online cookbook web application. It’s a place where users can add, edit, share and deletes their own recipes as well as browse other users recipes for inspiration all in on place.
-In order to add, edit and store recipes, users can register with their name, email and password in a save manner. Once registered users can loggin and manage their cookbook.
+Cocina is an online cookbook web application. It’s a place where users can add, edit, share and deletes their own recipes, as well as browse other users’ recipes for inspiration - all in one place.
 
-The aim of the site from the owner and is to promote owners cooking tools and utensil while providing a place for users, to get inspired to cook and create and manage their own cookbook all this is met by providing this functional and easy to use web application.
+In order to utilise their personal cookbook, users can register with their name, email and password in a secure manner. Once registered, users can log in and manage their cookbook.
 
-Users will be able to perform CRUD (Create, Read, Update and Delete) profiles and recipes. Users will be able to update all their recipes once they are signed up and logged in.
+The aim of the site for the owner is to promote their range of cooking tools and utensils while providing a place for users to get inspired to cook and create and manage their own cookbook. All this is met by providing this functional and easy to use web application.
 
-A free to join site that brings people together and allows them to share their passion for cooking.
+Users will be able to manage their own profiles and recipes, through the implementation of CRUD (Create, Read, Update and Delete) operations.
 
 
 ### Project Rational
 
-This app was created for the Data-Centric Development project of Code Institute Full Stack Software Development course. The project scope was to create a web app using Python and a no-SQL database (MongoDB), which uses CRUD operations to allow users to easily create, read, update and delete data from a database viewed through a web application
+This app was created for the Data-Centric Development project of Code Institute Full Stack Software Development course. The project scope was to create a web app using Python and a no-SQL database (MongoDB), which uses CRUD operations to allow users to easily create, read, update and delete data from a database viewed through a web application.
 
 This was developed as both a front-end and backend project. The technologies used for each are:
 - Frontend: HTML, CSS, JavaScript
@@ -55,29 +54,29 @@ This was developed as both a front-end and backend project. The technologies use
 - Hosting: Heroku
 - Database: MongoDB
 
+
 ## UX
 
 ### User Stories
 
 “As a user_____”
 
-- I often find myself on the lookout for recipe inspirations to cook at home
-- I’m passionate about cooking, I want to keep my recipes online in one place
-- I want to be able to share my recipes easily online with family and friends
-- I’m a very busy person, I would like to organize and manage my recipes for the week, sorting them by the 3 meals a day, to have them accessible on my mobile, and go shopping knowing what I’m going to cook each week
-- I’m new to cooking, I want to be able to easily find recipes, and add and manage my own recipes as a cook them
-- I want to be able to share via link my own recipes for others to try them
-- I live abroad, I would like to keep the recipes my mom send me online so I can have them with me all the time on the go
-
+- I often find myself on the lookout for recipe inspiration to cook at home.
+- I’m passionate about cooking and I want to keep my recipes online in one place.
+- I want to be able to share my recipes easily online with family and friends.
+- I’m a very busy person - I would like to organise and manage my recipes for the week, sorting them by the 3 meals a day, to have them accessible on my mobile, and go shopping knowing what I’m going to cook each week.
+- I’m new to cooking - I want to be able to easily find recipes, and add and manage my own recipes as I discover them.
+- I want to be able to share my own recipes for others to try them.
+- I live abroad - I would like to store the recipes my mother has given me online, so I can have them with me all the time on the go.
 
 
 ### Design Development
 
-The direction taking for styling this web app was to prioritise a minimal design, easy to read, navigate and to be responsive. Providing the best user expirience possible together with a pleasent user interface to navigate to.
+The direction taken for styling this web app was to prioritise a minimal design, which is easy and pleasant to read and navigate, as well as being responsive to provide the best possible user experience. 
 
 Primary Colour Palette: 
 
-The colour palette was chosen to create an elegant and minimalistic approach. The vivid colour that comes from the food photography combine with a beautiful and simple colour palette for a unisex feel yet an earthy feeling of healthy foods.
+The colour palette was chosen to create a minimalist and unisex experience. A simple and earthy colour palette was chosen, to complement the vivid food photography images.
 
 ![Primary Colour Palette](static/images/colourpalette.jpg)
 
@@ -88,14 +87,15 @@ Font-family: 'Libre Baskerville', serif; from google fonts.
 
 Responsivity
 
-This website is fully responsive to all screen sizes and devices, making the app easy to navigate. 
+This website is fully responsive on all screen sizes and devices, making the app easy to navigate.  
 
 
 ### Wireframes
 
-Wireframes where developed usgin Adobe XD. A personal choice as I find it a rapid and iterative process for me to develop wireframes.  
+Wireframes were developed using Adobe XD. This was a personal choice as I find it to be a rapid and iterative process for developing wireframes.  
 
 The links to these images are available at the following links:
+
 
 - [**_Wireframe 1_**](static/images/wireframe-homepage.jpg)
 
@@ -114,12 +114,42 @@ The links to these images are available at the following links:
 - [**_Wireframe 8_**](static/images/mobile-addrecipeform.jpg)
 
 
+## Features
+
+### Existing Features
+
+**Login**
+
+- Users can create an account and log in. This gives registered users the possibility to add reviews to recipes, edit them and delete them.
+ 
+**Account management**
+
+- Users can see and edit their account and change their information.
+- Users have the possibility to delete their account.
+ 
+**Recipes**
+- Registered users are able to create, edit and delete recipes.
+- All users and unregistered visitors can browse the full database and access all recipes.
+- Registered users
+- Registered users have access to functionalities reserved only to them, such as
+- Creating and editing a recipe
+- Deleting a recipe
+- Editing and deleting their account
+
+### Features Left to Implement
+
+**Rating Recipes** - To add a feature for users to rate recipes. I would like to develop a rating feature to give an average rating based on all likes against a listing id and display that average as a number or star icons on each listing.
+
+**Search or sort by recipe categories feature** - Add feature to sort all recipes by categories or via a search bar typing keywords. 
+
+**Add Reviews**  - Develop a feature for users to be able to add text reviews, comments and questions to each recipe to potentially be answered by the site owner or the user who added the recipe. This would be a great way for users to interact with each other.
+
+**Share** - Have an option for users to share directly from each recipe to social media account, or by email, WhatsApp and different apps. This could be developed connecting each app API provided. this could make the app more connected with the ability to share easily with one click.
+
 
 ### Database Structure
 
-The data is organized on MongoDB in four collections: Recipes, Categories, Cooking_tools and User.
-
-Main goal when designing the database was to keep it simple to deliver the best result.
+The data is organised on MongoDB in four collections: Recipes, Categories, Cooking_tools and User.
 
 DB Collections: 
 
@@ -172,74 +202,18 @@ password: "string"
 ```
 
 
-## Features
-
-### Functionality
-
-This app makes use of Python logic to enable users to register and/or login with a private account. The CRUD features are available using Python and MongoDB, allow users to create, read, update and delete records in a variety of manners:
-
-- Create recipes
-- Read recipes
-- Update their recipes
-- Delete their recipes
-- Create a secure user account
-- Update their profile account
-- Read their profile information
-- Delete their user account
-
-
-### Existing Features
-
-**Navbar Links** 
-The navbar contains the following links to all users:
-
-- Branding Icon( Also home button )
-- Home Button
-- All Recipes button (this page has a list of all the added recipes by all users)
-- Cooking Tools 
-- Login (Authorization checks are used to check that the username and password ( password is hashed ) with the details checked against the stored values in the database before users are logged in.)
-- Register (Facility to allow new users to register for an account. Checks are in place to ensure that the username doesn't already exist in the database before users are successfully registered. The passwords stored in the database are hashed for security purposes.)
-
-When the user is registered and logged in, the navbar will add buttons for Account, Add Recipe and Log out, the navbar will remove login and register buttons from the UI.
-
-**Navbar Links logged in**
-
-The following are the nav bar links available when a user is logged in:
-
-- Branding Icon (Also a home button)
-- Home Button
-- All Recipes button
-- Cooking Tools button
-- My Profile Button (to take the user to their specific profile page)
-    - Edit Account Details - Assuming a user exists, then the user will have the facility to update their user profile account details, this will update on the database as well.
-    - Delete Account - Feature allows user to delete their account. This will perform the action of removing the entire set of user details from the database.
-- Add Recipe Button ( this feature is only available to registered users to be able to add their own recipes. This listing data is then posted to the MongoDB database for retrieval in the All Recipes page.)
-    - Edit Recipes - This feature allows registered and logged in users to edit their recipes. This action updates the selected recipe from the database.
-    - Remove Recipes - This feature allows registered and logged in users to delete their recipes. This action removes the selected recipe from the database.
-- Logout - Allows users to log out of their account by clicking the 'Logout' link in the navbar. Upon clicking the button, the user session ends.
-
-
-### Features Left to Implement
-
-- **Rating Recipes** - To add a feature for users to rate recipes. I would like to develop a rating feature to give an average rating based on all likes against a listing id and display that average as a number or star icons on each listing.
-
-- **Search or sort by recipe categories feature** - Add feature to sort all recipes by categories or via a search bar typing key words. 
-
-- **Add Reviews**  - Develop a feature for users to be able to add text reviews, comments and questions to each recipes to potentially be answer by the site owneer or user who added recipe. This would be a great way for users to interact with each other.
-
-- **Share** - Have an option for users to share directly from each recipe to social media account, or by email, whatsapp and diferent apps. This could be develop connecting each app API provided. this could make the app more connected with the ability to share easily with one click.
-
-
 ## Technologies Used
 
 - [**HTML**](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
-    - This project makes use of **HTML** as the main structural element of the app.
+    - **HTML** Used for markup.
+- [**CSS**](https://developer.mozilla.org/en-US/docs/Web/CSS)
+    - **HTML** Used for markup.
 - [**Materialize**](https://materializecss.com/)
     - The project uses the **Materialize** framework to add a responsive grid system, prebuilt components, plugins built on jQuery, and Materialize styles to my app, before adding my custom styles.
 - [**jQuery**](https://jquery.com)
-    - The project uses **jQuery** as the primary JavaScript functionality. This is both the standard jQuery that is built with Materialize components, and my custom jQuery used in my script.js file.
+    - The project uses **jQuery** jQuery, to access and manipulate the DOM.
 - [**Python**](https://www.python.org/)
-    - The project uses **Python** as the back-end programming language for my app.
+    - The project uses **Python** for all backend logic.
 - [**PyMongo**](https://api.mongodb.com/python/current/)
     - The project uses **PyMongo** as the Python API for MongoDB. This API enables linking the data from the back-end database to the front-end app.
 - [**Werkzeug**](https://palletsprojects.com/p/werkzeug/)
@@ -249,9 +223,9 @@ The following are the nav bar links available when a user is logged in:
 - [**Jinja**](https://jinja.palletsprojects.com/en/2.10.x/)
     - The project uses **Jinja** for templating with Flask in the HTML code. I used **Jinja** to simplify my HTML code, avoid repetition, and allow simpler linking of the back-end to the front-end.
 - [**MongoDB**](https://cloud.mongodb.com/)
-    - The project uses **MongoDB** to store the database in the cloud. The information displayed in the front-end app is pulled and store in and from the database.
+    - The project uses **MongoDB** to store the database in the cloud. The information displayed in the front-end app is pulled and stored in and from the database.
 - [**Font Awesome**](https://fontawesome.com/)
-    - The project uses **Font Awesome** for the various icons in my app.
+    - The project uses **Font Awesome** for all icons in my app.
 - [**VScode**](https://code.visualstudio.com/)
     - Visual Studio Code was my IDE of choice for this project.
 
