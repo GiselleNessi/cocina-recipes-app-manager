@@ -22,7 +22,7 @@ mccabe==0.6.1
 mysql-connector-python==8.0.20
 mysqlclient==1.4.6
 passlib==1.7.2
-protobuf==3.12.2
+protobuf==3.15.0
 pycparser==2.20
 pylint==2.3.1
 pymongo==3.8.0
